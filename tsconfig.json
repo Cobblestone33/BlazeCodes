@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "es2022",
+      "module": "CommonJS",
+      "allowJs": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "moduleResolution": "node",
+      "isolatedModules": true,
+      "outDir": "./build",
+      "resolveJsonModule": true,
+      "baseUrl": "./src",
+      "typeRoots": ["/types/common", "./node_modules/@types"]
+    },
+    "include": ["./src"],
+    "exclude": ["./node_modules", "./test"]
+  }
