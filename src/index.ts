@@ -50,17 +50,6 @@ client.on("guildMemberAdd", (member) => {
   }
 });
 
-client.on("messageCreate", (message) => {
-  if (message.author.id !== "960596076572856381") {
-    console.log("NOT MATCHED !EVENT EMITTED");
-
-    return;
-  }
-  console.log("EVENT EMITTED");
-  if (!message?.member) throw new Error("Member not found");
-  client.emit("guildMemberAdd", message.member);
-});
-
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
 
