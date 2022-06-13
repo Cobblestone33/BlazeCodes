@@ -1,8 +1,4 @@
-import {
-  SlashCommandBuilder,
-  channelMention,
-  SlashCommandSubcommandBuilder,
-} from "@discordjs/builders";
+import { SlashCommandBuilder } from "@discordjs/builders";
 import {
   CommandInteraction,
   GuildMemberRoleManager,

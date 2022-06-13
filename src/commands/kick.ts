@@ -1,16 +1,10 @@
-import {
-  SlashCommandBuilder,
-  channelMention,
-  SlashCommandSubcommandBuilder,
-} from "@discordjs/builders";
+import { SlashCommandBuilder } from "@discordjs/builders";
 import {
   CommandInteraction,
-  Guild,
   GuildMemberRoleManager,
   MessageEmbed,
   Permissions,
 } from "discord.js";
-import { TextChannel } from "discord.js";
 
 const KickPermissionEmbed = new MessageEmbed()
   .setTitle("Insufficient permissions")

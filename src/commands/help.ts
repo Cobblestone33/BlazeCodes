@@ -1,6 +1,6 @@
 import { CommandInteraction } from "discord.js";
 
-import { SlashCommandBuilder, channelMention } from "@discordjs/builders";
+import { SlashCommandBuilder } from "@discordjs/builders";
 import { MessageEmbed } from "discord.js";
 
 const helpEmbed = new MessageEmbed()
