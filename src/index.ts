@@ -21,14 +21,18 @@ const commandFiles = fs
   .readdirSync(commandsPath)
   .filter((file) => file.endsWith(".js"));
 
+// eslint-disable-next-line no-loops/no-loops
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const command = require(filePath);
   client.commands.set(command.default.data.name, command.default);
 }
 
 client.once("ready", () => {
+  if (!client?.user) throw new Error("No user detected");
   console.log("Ready!");
+  client.user.setActivity(`Meatballs Webcam`, { type: "STREAMING" });
 });
 client.on("guildMemberAdd", (member) => {
   const channel = member.client.channels.cache.get("984122932324368427"); // Getting the channel
@@ -47,6 +51,26 @@ client.on("guildMemberAdd", (member) => {
     if (channel.type !== "GUILD_TEXT")
       throw new Error("Channel is not a text channel");
     channel.send({ embeds: [welcome] });
+  }
+});
+
+client.on("guildMemberRemove", (member) => {
+  const channel = member.client.channels.cache.get("984122932324368427"); // Getting the channel
+  if (channel) {
+    // Checking if the channel exist
+    const leave = new MessageEmbed()
+      .setTitle("Leave")
+      .setDescription(
+        `**${member.user.tag}** Left **BlazeCodes** discord, RIP in chat`
+      )
+      .setColor("RED")
+      .setTimestamp()
+      .setFooter({ text: "Bot made by TheSwedishMeatball!" });
+    const channel = member.client.channels.cache.get("984122932324368427");
+    if (!channel) throw new Error("Channel not found");
+    if (channel.type !== "GUILD_TEXT")
+      throw new Error("Channel is not a text channel");
+    channel.send({ embeds: [leave] });
   }
 });
 
